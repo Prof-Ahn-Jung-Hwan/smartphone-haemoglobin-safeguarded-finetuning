@@ -26,7 +26,6 @@ scripts=(
   supp_tableST7_inputs_without_safeguards_10seed.py
   supp_tableST8_seed_values_10seed.py
   supp_tableST10_ranking_10seed.py
-  supp_tableST12_auxiliary_10seed.py
   supp_figSF2_calibration_size.py
   main_figure3_calibration_safeguards_10seed.py     # Table 3 · ST3 뒤
 )

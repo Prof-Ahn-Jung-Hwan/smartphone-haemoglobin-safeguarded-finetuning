@@ -9,7 +9,6 @@ A mobile model (MobileNetV3-Large, 2·97 million deployed parameters) estimates 
 | S1 | LayerNorm on the final features | `configs/safeguard_S1*.yaml` (`use_norm_only`, or the normalisation before the adaptation layer) |
 | S2 | adaptation (linear projection) layer | `use_encoder: true` |
 | S3 | backbone batch-normalisation statistics kept at their development values during local fine-tuning | `finetune(..., freeze_extra="bn")` in `main/external/260918_external_grid.py` |
-| S4 · S5 | auxiliary losses (anchor · batch mean) — explored during development, **not reported in the paper** | `configs/safeguard_S1_S2_S4_S5.yaml` (`force_lambda`) |
 
 The recommended model is MobileNetV3-Large with S1+S2+S3. The safeguards were also tested in EfficientNet-B0, MobileNetV2, MobileViT-XXS and EdgeNeXt-XS (36 backbone–configuration combinations; 138 000 local fine-tuning runs in all experiments).
 
@@ -40,7 +39,7 @@ A GPU is required: the training code uses `torch.autocast` on CUDA.
 | Path | What | Writes to |
 |---|---|---|
 | `code/` | model (`model/`), data loader (`dataset/`), training (`src/train_bins.py`), ROI composition (`common/roi_lib.py`), SAM 3 helpers (`sam3/`) | — |
-| `configs/` | exact training configurations of the five safeguard settings (paths removed) + the demo configuration | — |
+| `configs/` | exact training configurations of the four development settings — no safeguards, S1, S2, S1 + S2 (paths removed; S3 acts only during fine-tuning) + the demo configuration | — |
 | `main/external/260918_external_grid.py` | external calibration engine: draws (`split`), `finetune()`, `predict()` | `main/results/external/…` |
 | `main/analysis/260922_stage5_ext.py` | external evaluation driver used in the study (`zero` = before calibration, `few` = calibrated; `--freeze-extra bn --tag bn` = S3) | `<experiment>/external/{zero,few,few_bn}/…` |
 | `demo/` | smoke test on public images | `demo/work/` |
