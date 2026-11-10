@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+demo/work/
+runs/
+*.ckpt
+*.pt
+*.pth
+.DS_Store

@@ -1,0 +1,53 @@
+# S1 + S2 with auxiliary losses S4 (anchor) and S5 (batch mean)
+# Exact training configuration used in the study (MobileNetV3-Large, seed 1, fold 0),
+# with machine-specific paths removed. Run from the repository root:
+#   PYTHONPATH=code python code/src/train_bins.py -c configs/safeguard_S1_S2_S4_S5.yaml --fold 0 --cv-fold 10 --val-inner 9   # seed is the `seed` key below
+Hb_maxima: 18
+Hb_minima: 3
+alpha: 100
+anno_path: PATH/TO/arm_internal_auto_scca.xlsx
+arc_m: 0.0
+backbone: mobilenet_v3_large
+bin_spacing: linear
+bins: 40
+cv_fold: 10
+dataset: ajoumc
+dataset_root: .
+device: 0
+disc_shift: 0
+epochs: 100
+exp_name: safeguard_S1_S2_S4_S5
+eye: exclusive
+fold: 0
+force_attn: false
+force_lambda: 1e-06,0.01,1.0
+force_lr: 0.0003
+gamma: 1.0
+hybrid_anno_path: ''
+hybrid_mode: false
+imb_loss: ib_focal_loss
+img_path: ''
+img_size: 224
+lambda_1: 1.0e-06
+lambda_2: 0.01
+lambda_3: 1.0
+light_backbone: false
+log_dir: runs
+lr: 0.0003
+no_attn: true
+no_enc: false
+no_ord: false
+no_sampling: true
+optimizer: adamw
+ordinal_bins: 40
+scheduler: ''
+seed: 1
+start_ib_epoch: 201
+test_batch_size: 128
+test_workers: 0
+train_batch_size: 64
+train_workers: 6
+use_encoder: true
+use_ordinal_regression: false
+val_inner: 9
+weight_decay: 0.01

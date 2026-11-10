@@ -1,0 +1,18 @@
+# Versions used in the study (Python 3.10.18, CUDA 12.8, one NVIDIA GPU).
+# Install PyTorch for your CUDA version first: https://pytorch.org/get-started/locally/
+torch==2.7.1
+torchvision==0.22.1
+timm==1.0.15
+einops==0.8.1
+numpy==1.26.4
+pandas==2.2.3
+scikit-learn==1.6.1
+scipy==1.15.2
+PyYAML==6.0.2
+openpyxl==3.1.5
+Pillow==12.0.0
+tqdm==4.67.1
+matplotlib==3.10.0
+# segmentation (reference implementation only)
+transformers==5.15.1
+opencv-python==4.10.0.84
